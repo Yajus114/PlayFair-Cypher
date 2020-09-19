@@ -4,8 +4,7 @@ import numpy as np
 import random as randy
 
 
-def key_matrix(key):
-    ran_char = ''
+def key_matrix(key):  # function used to generate the key matrix using an inputed pass phrase or key phrase. The code accepts spaces and capital letters also.
     b = []
     count = 0
     sen = "abcdefghijklmnopqrstuvwxyz"
@@ -15,14 +14,14 @@ def key_matrix(key):
             if char not in b:
                 if char == 'i' or char == 'j':
                     if count == 0:
-                        b.append('ij')
+                        b.append('ij')  # appending 'ij' once for i or j in key
                         count += 1
                 else:
                     b.append(char.lower())
 
-    # print(b)
 
-    for char in sen:
+
+    for char in sen:  # appending the rest of the remaining alphabets to the list
         if char == 'i' or char == 'j':
             if 'ij' in b:
                 pass
@@ -31,25 +30,25 @@ def key_matrix(key):
         elif char not in b:
             b.append(char)
 
-    b = np.array(b).reshape(5, 5)
+    b = np.array(b).reshape(5, 5)  # matrix formation
 
-    return b
+    return b  # returning the key matrix
 
 
 def Plain_To_Cypher(pt, key):
     ran_char = ''
     mat = key_matrix(key)
-    # print(mat)
+    # print(mat)  # if you enable this, you may generate the key matrix simultaneously with the cypher
     ct = ''
     a, c = [], []
-    if len(pt) % 2 != 0:
+    if len(pt) % 2 != 0:  # adding a random character to the plain text if length of plain text is odd
         ran_char = chr(randy.randint(ord('a'), (ord('z') + 1)))
         pt += ran_char
 
-    for z in range(0, len(pt), 2):
+    for z in range(0, len(pt), 2):  # appending pairs from the plaintext
         a.append(pt[z] + pt[z + 1])
 
-    for char in a:
+    for char in a:  # generating the cypher
         for i in range(1):
             c.append(char[i])
             c.append(char[i + 1])
