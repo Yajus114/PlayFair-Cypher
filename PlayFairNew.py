@@ -158,11 +158,11 @@ while 1:
     q = int(input("Enter your choice:\n1. Plain Text to Cypher Text\n2. Cypher Text to Plain Text\n3. Display key "
                   "matrices\n4. Exit.\n-->"))
     if q == 1:
-        Plain_To_Cypher(str(input("Enter the Plain Text(length of text > 1):\n")).replace(' ', '').lower(),
+        Plain_To_Cypher(str(input("Enter the Plain Text(length of text > 1):\n")).strip().lower(),
                         list(map(str, input("Enter the key:\n").lower().split(' '))))
 
     elif q == 2:
-        Cypher_To_Plain(str(input("Enter the Cypher Text(length of text > 1):\n")).replace(' ', '').lower(),
+        Cypher_To_Plain(str(input("Enter the Cypher Text(length of text > 1):\n")).strip().lower(),
                         list(map(str, input("Enter the key:\n").lower().split(' '))))
     elif q == 3:
         print(key_matrix(list(map(str, input("Enter the key:\n").lower().split(' ')))))
